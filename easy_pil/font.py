@@ -89,3 +89,24 @@ class Font:
             Font size, by default 10
         """
         return ImageFont.truetype(fonts_path["montserrat"][variant], size=size)
+
+    @staticmethod
+    def sanskr(
+        size: int = 10
+    ):
+        """Sans Korean"""
+        return ImageFont.truetype("./properties/sanskr.otf", size=size)
+
+    @staticmethod
+    def sanscn(
+        size: int = 10
+    ):
+        """Sans Chinese"""
+        return ImageFont.truetype("./properties/sanscn.otf", size=size)
+
+    @staticmethod
+    def sansjp(
+        size: int = 10
+    ):
+        """Sans Japanese"""
+        return ImageFont.truetype("./properties/sansjp.otf", size=size)
