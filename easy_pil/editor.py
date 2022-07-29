@@ -233,6 +233,45 @@ class Editor:
 
         return self
 
+    def text_stroke(
+        self,
+        position: Tuple[float, float],
+        text: str,
+        stroke_width: int,
+        font: Union[ImageFont.FreeTypeFont, Font] = None,
+        color: Union[Tuple[int, int, int], str, int] = "black",
+        align: Literal["left", "center", "right"] = "left",
+        stroke_fill: str = "white"
+    ) -> Editor:
+        """Draw text into image
+
+        Parameters
+        ----------
+        position : Tuple[float, float]
+            Position to draw text
+        text : str
+            Text to draw
+        font : Union[ImageFont.FreeTypeFont, Font], optional
+            Font used for text, by default None
+        color : Union[Tuple[int, int, int], str, int], optional
+            Color of the font, by default "black"
+        align : Literal["left", "center", "right"], optional
+            Align text, by default "left"
+        stroke_width : int
+            Add a text border.
+        stroke_fill : str
+            The color of the text border, by default "white"
+        """
+        if isinstance(font, Font):
+            font = font.font
+
+        anchors = {"left": "lt", "center": "mt", "right": "rt"}
+
+        draw = ImageDraw.Draw(self.image)
+        draw.text(position, text, color, font=font, anchor=anchors[align], stroke_width=stroke_width, stroke_fill=stroke_fill)
+
+        return self
+
     def multicolor_text(
         self,
         position: Tuple[float, float],
