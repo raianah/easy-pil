@@ -233,6 +233,39 @@ class Editor:
 
         return self
 
+    def multiline_text(
+        self,
+        position: Tuple[float, float],
+        text: Union[str, List[str]],
+        spacing: Union[int, float] = 5,
+        font: Union[ImageFont.FreeTypeFont, Font] = None,
+        color: Union[Tuple[int, int, int], str, int] = "black",
+    ) -> Editor:
+        """Draw multiple texts into image
+
+        Parameters
+        ----------
+        position : Tuple[float, float]
+            Position to draw text
+        text : Union[str, List[str]]
+            Text to draw
+        spacing : Union[int, float]
+            Determines spaces per text, by default 5
+        font : Union[ImageFont.FreeTypeFont, Font], optional
+            Font used for text, by default None
+        color : Union[Tuple[int, int, int], str, int], optional
+            Color of the font, by default "black"
+        """
+        if isinstance(font, Font):
+            font = font.font
+        if isinstance(text, List):
+            text = "\n".join(line.strip() for line in text)
+
+        draw = ImageDraw.Draw(self.image)
+        draw.multiline_text(position, text, color, font=font, spacing=spacing)
+
+        return self
+    
     def text_stroke(
         self,
         position: Tuple[float, float],
