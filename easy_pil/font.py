@@ -18,6 +18,7 @@ fonts_path = {
         "bold": os.path.join(fonts_directory, "montserrat", "montserrat_bold.ttf"),
         "italic": os.path.join(fonts_directory, "montserrat", "montserrat_italic.ttf"),
         "light": os.path.join(fonts_directory, "montserrat", "montserrat_light.ttf"),
+        "semibold": os.path.join(fonts_directory, "montserrat", "montserrat_semibold.ttf")
     },
     "poppins": {
         "regular": os.path.join(fonts_directory, "poppins", "poppins_regular.ttf"),
@@ -76,8 +77,9 @@ class Font:
 
     @staticmethod
     def montserrat(
-        variant: Literal["regular", "bold", "italic", "light"] = "regular",
+        variant: Literal["regular", "bold", "semibold", "italic", "light"] = "regular",
         size: int = 10,
+        encoding: str = "unic"
     ):
         """Montserrat font
 
@@ -88,25 +90,61 @@ class Font:
         size : int, optional
             Font size, by default 10
         """
-        return ImageFont.truetype(fonts_path["montserrat"][variant], size=size)
+        return ImageFont.truetype(fonts_path["montserrat"][variant], size=size, encoding=encoding)
 
     @staticmethod
     def sanskr(
-        size: int = 10
+        size: int = 10,
+        encoding: str = "unic"
     ):
-        """Sans Korean"""
-        return ImageFont.truetype("./properties/sanskr.otf", size=size)
+        """Sans Korean Font
+        
+        Parameters
+        ----------
+        size : int, optional
+            Font size, by default 10
+        """
+        return ImageFont.truetype("./properties/sanskr.otf", size=size, encoding=encoding)
 
     @staticmethod
     def sanscn(
-        size: int = 10
+        size: int = 10,
+        encoding: str = "unic"
     ):
-        """Sans Chinese"""
-        return ImageFont.truetype("./properties/sanscn.otf", size=size)
+        """Sans Chinese Font
+        
+        Parameters
+        ----------
+        size : int, optional
+            Font size, by default 10
+        """
+        return ImageFont.truetype("./properties/sanscn.otf", size=size, encoding=encoding)
 
     @staticmethod
     def sansjp(
-        size: int = 10
+        size: int = 10,
+        encoding: str = "unic"
     ):
-        """Sans Japanese"""
-        return ImageFont.truetype("./properties/sansjp.otf", size=size)
+        """Sans Japanese Font
+        
+        Parameters
+        ----------
+        size : int, optional
+            Font size, by default 10
+        """
+        return ImageFont.truetype("./properties/sansjp.otf", size=size, encoding=encoding)
+
+    @staticmethod
+    def unisansheavy(
+        size: int = 10,
+        encoding: str = "unic"
+    ):
+        """Uni Sans Font
+        
+        Parameters
+        ----------
+        size : int, optional
+            Font size, by default 10
+        """
+        return ImageFont.truetype(font="./properties/Uni Sans Heavy.otf", size=size, encoding=encoding)
+
