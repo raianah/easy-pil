@@ -240,6 +240,7 @@ class Editor:
         spacing: Union[int, float] = 5,
         font: Union[ImageFont.FreeTypeFont, Font] = None,
         color: Union[Tuple[int, int, int], str, int] = "black",
+        align: Literal["left", "center", "right"] = "left",
     ) -> Editor:
         """Draw multiple texts into image
 
@@ -255,17 +256,21 @@ class Editor:
             Font used for text, by default None
         color : Union[Tuple[int, int, int], str, int], optional
             Color of the font, by default "black"
+        align : Literal["left", "center", "right"], optional
+            Align text, by default "left"
         """
         if isinstance(font, Font):
             font = font.font
         if isinstance(text, List):
             text = "\n".join(line.strip() for line in text)
 
+        anchors = {"left": "la", "center": "ma", "right": "ra"}
+
         draw = ImageDraw.Draw(self.image)
-        draw.multiline_text(position, text, color, font=font, spacing=spacing)
+        draw.multiline_text(position, text, color, font=font, spacing=spacing, anchor=anchors[align])
 
         return self
-    
+
     def text_stroke(
         self,
         position: Tuple[float, float],
