@@ -1,5 +1,8 @@
 # Easy PIL
-A python library built on top of [PIL](https://github.com/python-pillow/Pillow) to easily edit/modify images. 
+A python library built on top of [PIL](https://github.com/python-pillow/Pillow) to easily edit/modify images. Specifically personalized for me.
+
+## Warning!
+This is a personalized fork. To install in your own, use `pip install git+https://github.com/raianah/easy-pil`. Requires Pillow==11.1.2 or similar version.
 
 ## Getting Started
 Using this for the first time? Here are some links to help you get started.
